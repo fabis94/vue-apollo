@@ -153,21 +153,23 @@ export default {
         ...this.options,
         manual: true,
         result (result) {
-          const { errors, loading, networkStatus } = result
-          let { error } = result
+          const { loading, networkStatus, error } = result
           result = Object.assign({}, result)
 
-          if (errors && errors.length) {
-            error = new Error(`Apollo errors occurred (${errors.length})`)
-            error.graphQLErrors = errors
-          }
+          // Unnecessary error rewriting:
+          // if (errors && errors.length) {
+          //   error = new Error(`Apollo errors occurred (${errors.length})`)
+          //   error.graphQLErrors = errors
+          // }
 
           let data = {}
 
           if (loading) {
             Object.assign(data, this.$_previousData, result.data)
           } else if (error) {
-            Object.assign(data, this.$apollo.queries.query.observer.getLastResult() || {}, result.data)
+            // Fix for full last result being used as 'data'
+            const lastResult = this.$apollo.queries.query.observer.getLastResult() || {}
+            Object.assign(data, lastResult.data || {}, result.data)
           } else {
             data = result.data
             this.$_previousData = result.data
