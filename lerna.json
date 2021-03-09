@@ -7,7 +7,7 @@
   ],
   "command": {
     "publish": {
-      "registry": "https://gitlab.printful.com/api/v4/group/ideabits/packages/npm/"
+      "registry": "https://gitlab.printful.com/api/v4/packages/npm/"
     }
   }
 }
