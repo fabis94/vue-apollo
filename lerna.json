@@ -4,10 +4,5 @@
   "version": "3.0.7",
   "packages": [
     "packages/*"
-  ],
-  "command": {
-    "publish": {
-      "registry": "https://gitlab.printful.com/api/v4/group/ideabits/packages/npm/"
-    }
-  }
+  ]
 }
