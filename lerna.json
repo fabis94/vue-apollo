@@ -7,7 +7,7 @@
   ],
   "command": {
     "publish": {
-      "registry": "https://gitlab.printful.com/api/v4/packages/npm/"
+      "registry": "https://gitlab.printful.com/api/v4/projects/ideabits/vue-apollo/packages/npm/"
     }
   }
 }

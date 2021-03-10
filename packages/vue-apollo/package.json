@@ -76,5 +76,5 @@
   "jest": {
     "testRegex": "tests/unit/.*\\.test.js$"
   },
-  "gitHead": "9903c039ded5933402ed9976baf67068aadf3620"
+  "gitHead": "dfe2e5ce20c38c5286ac2cdad0e3c524fc95c855"
 }
