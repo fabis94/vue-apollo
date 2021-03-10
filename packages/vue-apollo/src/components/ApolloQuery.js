@@ -153,14 +153,16 @@ export default {
         ...this.options,
         manual: true,
         result (result) {
-          const { loading, networkStatus, error } = result
+          const { loading, networkStatus, errors } = result
+          let { error } = result
           result = Object.assign({}, result)
 
-          // Unnecessary error rewriting:
-          // if (errors && errors.length) {
-          //   error = new Error(`Apollo errors occurred (${errors.length})`)
-          //   error.graphQLErrors = errors
-          // }
+          // Overwriting error only if it doesn't already exist
+          if (!error && errors && errors.length) {
+            const msg = errors.length > 1 ? `GraphQL errors occurred: (${errors.length})` : errors[0].message
+            error = new Error(msg)
+            error.graphQLErrors = errors
+          }
 
           let data = {}
 
