@@ -8,8 +8,8 @@ import {
   MutationOptions,
   SubscriptionOptions,
   OperationVariables,
+  FetchResult,
 } from '@apollo/client/core'
-import { FetchResult } from 'apollo-link'
 import Observable from 'zen-observable'
 import { ApolloProvider } from './apollo-provider'
 import {
