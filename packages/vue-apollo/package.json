@@ -1,6 +1,6 @@
 {
-  "name": "vue-apollo",
-  "version": "3.0.7",
+  "name": "@ideabits/vue-apollo",
+  "version": "3.0.7-patch1.5",
   "description": "Use Apollo and GraphQL with Vue.js",
   "main": "dist/vue-apollo.umd.js",
   "module": "dist/vue-apollo.esm.js",
@@ -32,9 +32,6 @@
     "url": "https://github.com/Akryum/vue-apollo/issues"
   },
   "homepage": "https://github.com/Akryum/vue-apollo#readme",
-  "publishConfig": {
-    "access": "public"
-  },
   "peerDependencies": {
     "graphql-tag": "^2"
   },

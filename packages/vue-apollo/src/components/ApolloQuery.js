@@ -153,12 +153,14 @@ export default {
         ...this.options,
         manual: true,
         result (result) {
-          const { errors, loading, networkStatus } = result
+          const { loading, networkStatus, errors } = result
           let { error } = result
           result = Object.assign({}, result)
 
-          if (errors && errors.length) {
-            error = new Error(`Apollo errors occurred (${errors.length})`)
+          // Overwriting error only if it doesn't already exist
+          if (!error && errors && errors.length) {
+            const msg = errors.length > 1 ? `GraphQL errors occurred: (${errors.length})` : errors[0].message
+            error = new Error(msg)
             error.graphQLErrors = errors
           }
 
@@ -167,7 +169,9 @@ export default {
           if (loading) {
             Object.assign(data, this.$_previousData, result.data)
           } else if (error) {
-            Object.assign(data, this.$apollo.queries.query.observer.getLastResult() || {}, result.data)
+            // Fix for full last result being used as 'data'
+            const lastResult = this.$apollo.queries.query.observer.getLastResult() || {}
+            Object.assign(data, lastResult.data || {}, result.data)
           } else {
             data = result.data
             this.$_previousData = result.data

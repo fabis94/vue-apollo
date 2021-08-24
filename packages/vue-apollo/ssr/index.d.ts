@@ -1,4 +1,4 @@
-import { ApolloProvider } from 'vue-apollo'
+import { ApolloProvider } from '@ideabits/vue-apollo'
 
 interface GetStatesOptions {
   exportNamespace?: string
